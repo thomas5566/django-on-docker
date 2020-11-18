@@ -1,0 +1,85 @@
+.card-columns {
+    @include media-breakpoint-only(lg) {
+      column-count: 4;
+    }
+    @include media-breakpoint-only(xl) {
+      column-count: 5;
+    }
+  }
+
+/* 展示用 */
+
+body {
+    padding: 30px;
+  }
+
+  h2, h3 {
+    text-align: center;
+  }
+
+  p {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  /* 以下才式正式的樣式 */
+
+  @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+  html,
+  body {
+    font-size: 16px;
+    font-family: 'Noto Sans', 'PingFang TC', 'Heiti TC', '微軟正黑體', sans-serif;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    font-family: 'Noto Sans', 'PingFang TC', 'Heiti TC', 'Adobe 繁黑體 Std', 'AdobeFanHeitiStd-Bold', '微軟正黑體', sans-serif;
+  }
+
+  .article-content {
+    color: #666;
+    line-height: 1.7;
+    font-size: 18px;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 1em;
+      margin-bottom: .6em;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    h3 {
+      font-size: 1.7rem;
+    }
+    h4 {
+      font-size: 1.5rem;
+    }
+    h5 {
+      font-size: 1.2rem;
+    }
+    h6 {
+      font-size: 1rem;
+    }
+
+    hr {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    pre {
+      margin-top: 35px;
+      margin-bottom: 35px;
+    }
+  }

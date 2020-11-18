@@ -1,0 +1,25 @@
+{% extends 'movies/base.html' %}
+
+{% load static %}
+
+{# match base.py  block content name #}
+{% block content %}
+<div class="card-columns">
+    {% for movie in movies %}
+    {% if movie.images %}
+    <div class="card">
+        <a href="{% url 'detail' movie.id %}">
+            <img src="{{ movie.images.url }}" width="80%" class="img-thumbnail" alt="...">
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            <h5 class="card-title">{{ movie.duration }}</h5>
+            <p class="card-text">{{ movie.release_date }} {{ movie.genre }}</p>
+            <p class="card-text">IMDB: {{ movie.rating }}</p>
+            <p class="card-text"><small class="text-muted">上次更新時間： {{ movie.last_modified }}</small></p>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock content %}
