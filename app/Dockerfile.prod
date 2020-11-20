@@ -12,6 +12,8 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+RUN pip install --upgrade pip
+
 # install dependencies
 RUN apk update \
      && apk add postgresql-dev \
@@ -40,7 +42,6 @@ RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /et
 && apk add --update --no-cache py3-numpy py3-pandas@community
 
 # lint
-RUN pip install --upgrade pip
 RUN pip install flake8
 COPY . .
 RUN flake8 --ignore=E501,F401 ./best_movies
@@ -72,6 +73,8 @@ RUN mkdir $APP_HOME/mediafiles
 WORKDIR $APP_HOME
 
 # install dependencies
+# --no-cache option tells Docker to build the image from scratch
+# and ensures the installation of the latest version
 RUN apk update \
      && apk add postgresql-dev \
                 gcc \

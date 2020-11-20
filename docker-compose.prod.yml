@@ -5,8 +5,13 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile.prod
-    command: gunicorn best_movies.wsgi:application --bind 0.0.0.0:8000
+    command: sh -c "python manage.py makemigrations &&
+                    python manage.py migrate &&
+                    python manage.py collectstatic --noinput &&
+                    gunicorn best_movies.wsgi:application --bind 0.0.0.0:8000"
     volumes:
+      - ./app/:/home/app/web/
+      - ./data/:/home/app/web/data/
       - static_volume:/home/app/web/staticfiles
       - media_volume:/home/app/web/mediafiles
     expose:
